@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Booking</title>
+    <link rel="stylesheet" type="text/css" href="css/movieBooking.css">
+</head>
+<body>
+    <div class="userbooking">
+        <h1>Movie Booking</h1>
+        <form id="bookingForm">
+            <label for="movie" style="color: white;"> Click on the Movie to select :</label>
+            <div class="screenText">
+                <div class="individualScreen" th:each="sc : ${screens}">
+                	
+                </div>
+            </div>
+            
+            <div class="movie">
+            	<div th:each="sc : ${screens}">
+            		<label for="movie" th:text="${sc.screenName}"></label>
+	                <img th:src="@{'images/' + ${sc.screenMovieImage}}" alt="error loding image" th:data-movie="${sc.screenMovieName}" th:data-screen="${sc.screenName}" th:data-cost="${sc.screenMoviePrice}"/>
+	            </div>
+            </div>
+
+            <label for="movie">Movie Name :</label>
+            <span id="movie" name="movie"> --- </span>
+
+            <label for="screen">Select Screen:</label>
+            <span id="screen" name="screen"> --- </span>
+
+            <label for="cost">Price : </label>
+            <span id="cost" name="cost"> ---INR </span>
+
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Select Time:</label>
+            <select id="time" name="time" required>
+                <option value="time1"> 9:00 am</option>
+                <option value="time2"> 2:00 pm</option>
+                <option value="time3"> 10:15 pm</option>
+            </select>
+
+            <label for="seats">Select Seats:</label>
+            <div class="seats" id="gridBox">
+                <input type="checkbox" id="seat1" name="seats" value="1">
+                <input type="checkbox" id="seat2" name="seats" value="2">
+                <input type="checkbox" id="seat3" name="seats" value="3">
+                <input type="checkbox" id="seat4" name="seats" value="4">
+                <input type="checkbox" id="seat5" name="seats" value="5">
+                <input type="checkbox" id="seat6" name="seats" value="6">
+                <input type="checkbox" id="seat7" name="seats" value="7">
+                <input type="checkbox" id="seat8" name="seats" value="8">
+                <input type="checkbox" id="seat9" name="seats" value="9">
+                <input type="checkbox" id="seat10" name="seats" value="10">
+                <input type="checkbox" id="seat11" name="seats" value="11">
+                <input type="checkbox" id="seat12" name="seats" value="12">
+                <input type="checkbox" id="seat13" name="seats" value="13">
+                <input type="checkbox" id="seat14" name="seats" value="14">
+                <input type="checkbox" id="seat15" name="seats" value="15">
+                <input type="checkbox" id="seat16" name="seats" value="16">
+                <input type="checkbox" id="seat17" name="seats" value="17">
+                <input type="checkbox" id="seat18" name="seats" value="18">
+                <input type="checkbox" id="seat19" name="seats" value="19">
+                <input type="checkbox" id="seat20" name="seats" value="20">
+            </div>
+
+            <label for="finalData"> Final Booking Details</label>
+            <span id="finalData"></span>
+
+            <button type="submit" class="bookingbtn">Book Now</button>
+        </form>
+    </div>
+
+    <script>
+    	/* selecting required movie */
+	    document.querySelectorAll('.movie img').forEach(img => {
+	        img.addEventListener('click', function() {
+	    		
+	    		const cost = this.dataset.cost;
+	            const movie = this.dataset.movie;
+	            const screen = this.dataset.screen;
+	
+	            document.getElementById('movie').innerText = movie;
+	            document.getElementById('screen').innerText = screen;
+	    		document.getElementById('cost').innerText = cost;
+	
+	            box = document.getElementById('gridBox');
+	            box.style.display = "grid";
+	
+	
+	        });
+	    });
+	    
+	    /*final details of booking*/
+	    document.querySelectorAll('input[name="seats"]').forEach(seat => {
+	        seat.addEventListener('click', function() {
+	            const price = parseInt(document.getElementById('cost').innerText, 10);
+	            const selectedSeats = document.querySelectorAll('input[name="seats"]:checked').length;
+	            movieName = document.getElementById('movie');
+	            screenNum = document.getElementById('screen');
+	            movieDate = document.getElementById('date');
+	            totalPrice = price*selectedSeats;
+
+	            if(movieName.innerText != '---')
+	            {
+	                document.getElementById('finalData').innerHTML = `
+	                <h4> Movie Name is : ${movieName.innerText} <br>
+	                Screen Number : ${screenNum.innerText} <br> 
+	                Booking Date : ${movieDate.innerText} <br> 
+	                Seats Booked : ${selectedSeats} <br> 
+	                Total Ticket Price : ${totalPrice}
+	                </h4>
+	                `;
+	            }
+	            else
+	            {
+	                alert(' Please select the necessary details first');
+	            }
+
+	        });
+	    });
+    
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<meta charset="UTF-8">
+	<title> Welcome To Movie Booking</title>
+	<link rel="stylesheet" type="text/css" href="css/userLandingPage.css">
+	
+</head>
+<body>
+
+
+	<header class="header">
+		<nav class="topnav">
+		  <a class="active" href="#home">Home</a>
+		  <a href="#news">News</a>
+		  <a href="#contact">Contact</a>
+		  <a href="#about">About</a>
+		  
+		  <div class="user-items">
+		  	<button> <img src="images/user_icon.png"> </button>
+		  	<div class="dropdown-content">
+			    <a href="#">User Details</a>
+			    <a href="#">Logout</a>
+			</div>
+		  	
+		  </div>
+		</nav>
+	</header>
+	
+	
+	<div class="select-options">
+        <div class="details">
+			<h2> <a href="/screens">Book Movie</a> </h2>
+		</div>
+	</div>
+
+
+    <div class="userMovieDetails">
+    	<h3> User Movie Details </h3>
+		<div class="table-details">
+			<table class="table-containt">
+	    	
+				<thead>
+					<tr>
+						<th> Movie Name </th>
+						<th> Seats Booked </th>
+						<th> Movie Date </th>
+						<th> Movie Time </th>
+						<th> Total Cost </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td> Ben 10 </td>
+						<td> 5 </td>
+						<td> 10/1/2021 </td>
+						<td> 9:15 pm </td>
+						<td> 500 </td>
+					 </tr>
+				</tbody>
+			</table>
+		</div>
+    	
+    </div>
+	
+	
+	
+	
+
+</body>
+</html>

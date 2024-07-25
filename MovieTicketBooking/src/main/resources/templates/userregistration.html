@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="signup">
+        <form method="post" action="/userregister" id="formid">
+            <div class="signupInput">
+              <h1>Register</h1>
+              <p>Register as a user here</p>
+              <hr>
+
+              <label for="usernm"><b>Username</b></label>
+              <input type="text" name="username" placeholder="username" id="usernm" required>
+
+
+              <label for="email"><b>Email</b></label>
+              <input type="text" placeholder="Enter Email" name="email" id="email" required>
+          
+              <label for="psw"><b>Password</b></label>
+              <input type="password" placeholder="Enter Password" name="psw" id="psw" autocomplete="current-password" required>
+          
+              <label for="pswagain"><b>Repeat Password</b></label>
+              <input type="password" placeholder="Repeat Password" name="pswagain" id="pswagain" onkeyup="checkPass()" required>
+              <span id="confirmMessage" class="confirmMessage"></span>
+              <hr>
+          
+              <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+              <button type="submit" class="registerbtn" disabled> Register </button>
+            </div>
+          
+            <div class="signinredirect">
+              <p>Already have an account? <a href="/login">Sign in</a></p>
+            </div>
+          </form>
+    </div>
+
+    <script src="/signup.js"></script>
+    
+</body>
+</html>

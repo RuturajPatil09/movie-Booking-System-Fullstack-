@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    
+</head>
+<body>
+
+	<header class="header">
+		<nav class="topnav">
+		  <a class="active" href="#home">Home</a>
+		  <a href="#news">News</a>
+		  <a href="#contact">Contact</a>
+		  <a href="#about">About</a>
+		  
+		  <div class="button-redirect">
+		  	<button> <a href="/register"> Sign up </a> </button>
+		  	
+		  	<button> <a href="/login"> Sign in </a> </button>
+		  </div>
+		  
+		  
+		  <div class="search">
+            <form action="#">
+                <input type="text" placeholder="Search Movies" name="search">
+                <button>
+                    <i class="fa fa-search">Search</i>
+                </button>
+            </form>
+          </div>
+		  
+		  
+		</nav>
+	</header>
+    
+    <div class="movie-container">
+        <div class="movie-card" th:each="movie : ${movies}">
+            <img th:src="@{'images/' + ${movie.movieImage}}" alt="Movie">
+            <div class="movie-details">
+                <h2 th:text="${movie.movieName}"></h2>
+                <p th:text="${movie.description}"></p>
+                <p class="genre" th:text="${movie.genre}"></p>
+                <p class="rating" th:text="${movie.ratings}">Rating: </p>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
